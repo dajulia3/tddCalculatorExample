@@ -11,6 +11,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
 
 public class AverageCalculatorApplicationIT {
+
     private ByteArrayOutputStream out;
 
     @Before
@@ -28,6 +29,13 @@ public class AverageCalculatorApplicationIT {
     public void testCalculatorApplication(){
         CoolAverageCalculatorApplication.main(new String[]{"4", "2"});
         assertThat(out.toString(), containsString("3"));
+    }
+
+    @Test
+    public void testCalculatorApplication_NoNumbers(){
+        CoolAverageCalculatorApplication.main(new String[]{});
+        assertThat(out.toString(), containsString(CoolAverageCalculatorApplication.BAD_AVERAGE_INPUT_MESSAGE));
+
     }
 
 }
