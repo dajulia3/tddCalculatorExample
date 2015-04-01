@@ -2,6 +2,11 @@ package demo.cli;
 
 public class CoolAverageCalculatorApplication {
     public static void main(String[] args) {
-        System.out.println((Integer.parseInt(args[0]) + Integer.parseInt(args[1]) )/2);
+        int sum = 0;
+        for (String arg : args) {
+            sum += Integer.parseInt(arg);
+        }
+
+        System.out.println(sum/args.length);
     }
 }
