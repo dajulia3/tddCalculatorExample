@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -21,7 +22,9 @@ public class AverageCalculatorApplicationIT {
     }
 
     @After
-    public void teardown(){
+    public void teardown() throws IOException {
+        out.flush();
+        out.close();
         System.setOut(System.out);
     }
 
@@ -33,6 +36,7 @@ public class AverageCalculatorApplicationIT {
 
     @Test
     public void testCalculatorApplication_NoNumbers(){
+        out = new ByteArrayOutputStream();
         CoolAverageCalculatorApplication.main(new String[]{});
         assertThat(out.toString(), containsString(CoolAverageCalculatorApplication.BAD_AVERAGE_INPUT_MESSAGE));
 
