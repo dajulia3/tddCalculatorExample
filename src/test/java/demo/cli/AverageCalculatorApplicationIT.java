@@ -30,16 +30,15 @@ public class AverageCalculatorApplicationIT {
 
     @Test
     public void testCalculatorApplication(){
-        CoolAverageCalculatorApplication.main(new String[]{"4", "2"});
+        CoolAverageCalculatorApplicationMain.main(new String[]{"4", "2"});
         assertThat(out.toString(), containsString("3"));
     }
 
     @Test
     public void testCalculatorApplication_NoNumbers(){
         out = new ByteArrayOutputStream();
-        CoolAverageCalculatorApplication.main(new String[]{});
-        assertThat(out.toString(), containsString(CoolAverageCalculatorApplication.BAD_AVERAGE_INPUT_MESSAGE));
-
+        CoolAverageCalculatorApplicationMain.main(new String[]{});
+        assertThat(out.toString(), containsString(CoolAverageCalculatorApplicationMain.BAD_AVERAGE_INPUT_MESSAGE));
     }
 
 }
